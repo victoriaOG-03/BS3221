@@ -9,6 +9,7 @@
 
 h1 {
   margin: 0; /* Remove default margin */
+  align-self: flex-start; /* Align the h1 to the start (top) */
 }
 
 .buttons {
@@ -18,20 +19,17 @@ h1 {
   justify-content: center;
   margin-top: 20px; /* Add margin to separate buttons from heading */
 }
-/* CSS */
+
 .btn1 {
-  align-items: center;
+  /* button style */
   background-color: #fee6e3;
   border: 2px solid #111;
   border-radius: 8px;
   box-sizing: border-box;
   color: #111;
   cursor: pointer;
-  display: flex;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
-  height: 48px;
-  justify-content: center;
   line-height: 24px;
   max-width: 100%;
   padding: 0 25px;
@@ -43,7 +41,7 @@ h1 {
   touch-action: manipulation;
   width: 200px; /* Set a fixed width for the buttons */
   height: 48px; /* Set a fixed height for the buttons */
-  margin-bottom: 10px; /* Add margin between buttons */
+  margin-bottom: 30px; /* Add margin between buttons */
 }
 
 .btn1:after {
