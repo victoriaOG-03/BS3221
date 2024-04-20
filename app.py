@@ -1,37 +1,54 @@
 import bson
 import os
 from dotenv import load_dotenv
-# from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+import requests
+import json
 from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 from pymongo.collection import Collection
 from pymongo.database import Database
 from werkzeug.urls import url_quote_plus  # Importing the correct function
 
-# # acces to my MongoDB Atlas Cluster
-# load_dotenv()
-# connection_string: str = os.environ.get("CONNECTION_STRING")
-# mongo_client: MongoClient = MongoClient(connection_string)
 
+app = Flask(__name__)
 
-# # adding in the database
-# database: Database = mongo_client.get_database("woof-walk")
+# Load environment variables from .env file
+load_dotenv()
 
-# #adding in the collections
-# user_profile_collection: Collection = database.get_collection("user_profile")
-# pets_collection: Collection = database.get_collection("pets")
-# dog_walkers_collection: Collection = database.get_collection("dog_walkers")
-# service_requests_collection: Collection = database.get_collection("service_requests")
-# collection: Collection = database.get_collection("user_profile")
-
-# pet = {"name": "Lily", "breed": "Doberman", "age": 7, "size": "Large", "medicalHistory": "None"}
-# collection.insert_one(pet)
-
-
-
-# instantiating new object with "name"
-app: Flask = Flask(__name__)
-
+# Define route handler function to fetch pets data from MongoDB API
+@app.route('/get_pets', methods=['GET'])
+def get_pets():
+    # MongoDB API endpoint URL
+    url = "https://eu-west-2.aws.data.mongodb-api.com/app/data-xpfztyu/endpoint/data/v1/action/findOne"
+    
+    # Payload for the API request
+    payload = json.dumps({
+        "collection": "pets",
+        "database": "woof_walk",
+        "dataSource": "Waqq--ly",
+        "projection": {
+            "_id": 1
+        }
+    })
+    
+    # Headers for the API request
+    headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': os.environ.get('MONGODB_API_KEY')  # Use environment variable for API key
+    }
+    
+    # Send POST request to MongoDB API
+    response = requests.post(url, headers=headers, data=payload)
+    
+    # Check if request was successful
+    if response.status_code == 200:
+        # Parse JSON response
+        data = response.json()
+        return jsonify(data)
+    else:
+        return jsonify({'error': 'Failed to fetch pets data'}), 500
 
 # Route for the initial form page
 @app.route('/')
@@ -60,9 +77,3 @@ def search_dog_walker():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
-
-# # the initial form page
-# @app.route('/')
-# def index():
-#     return "Hello!"
