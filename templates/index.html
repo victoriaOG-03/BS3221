@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waqq.ly</title>
+    <title>Welcome to Waqqly Dogs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Flask App</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/register_dog">Register Dog</a></li>
-            <li><a href="/search_dog">Search Dog</a></li>
-            <li><a href="/register_dog_walker">Register Dog Walker</a></li>
-            <li><a href="/search_dog_walker">Search Dog Walker</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <h1>Welcome to Waqqly Dogs</h1>
+        <div class="buttons">
+            <a href="/register_dog" class="btn1">Register Dog</a>
+            <a href="/search_dog" class="btn1">Search Dog</a>
+            <a href="/register_dog_walker" class="btn1">Register Dog Walker</a>
+            <a href="/search_dog_walker" class="btn1">Search Dog Walker</a>
+        </div>
+    </div>
+
     <main>
         <p>This is the homepage of my Flask application.</p>
     </main>
@@ -25,3 +25,5 @@
     </footer>
 </body>
 </html>
+
+

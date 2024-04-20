@@ -1,7 +1,8 @@
 import bson
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, request
+# from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 from pymongo.collection import Collection
 from pymongo.database import Database
@@ -59,6 +60,7 @@ def search_dog_walker():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
 
 # # the initial form page
 # @app.route('/')
