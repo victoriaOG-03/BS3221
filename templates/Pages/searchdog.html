@@ -13,6 +13,11 @@
         <div class="buttons">
             <a href="/" class="btn1">Home</a>
         </div>
+        <ul>
+            {% for pet in results %}
+                <li>Name: {{ pet.name }}, Breed: {{ pet.breed }}, Age: {{ pet.age }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
     <main>
@@ -23,3 +28,4 @@
     </footer>
 </body>
 </html>
+
