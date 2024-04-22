@@ -2,7 +2,7 @@ import bson
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
-import requests
+# import requests
 import json
 from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
@@ -13,37 +13,8 @@ from werkzeug.urls import url_quote_plus  # Importing the correct function
 
 app = Flask(__name__)
 
-# Global variable to store pet data
-pets_data = [
-    {'name': 'Buddy', 'breed': 'Labrador Retriever', 'age': 3, 'location': 'london'},
-    {'name': 'Max', 'breed': 'German Shepherd', 'age': 5, 'location': 'manchester'},
-]
-
-walker_data = [
-    {'name': 'Jack Fox', 'experience': '10 years', 'rating': 'High', 'location': 'london'},
-    {'name': 'Lucy May', 'experience': '5 years', 'rating': 'Low', 'location': 'manchester'},
-    {'name': 'Joe Buchanan', 'experience': '7 years', 'rating': 'Medium', 'location': 'birmingham'},
-    {'name': 'Lily Rose', 'experience': '15 years', 'rating': 'High', 'location': 'wales'},
-
-]
-
 # Load environment variables from .env file
 load_dotenv()
-
-# MongoDB connection string
-mongo_uri = os.getenv("CONNECTION_STRING")
-
-# MongoDB API key
-api_key = os.getenv("MONGODB_API_KEY")
-
-# Connect to MongoDB
-client = MongoClient(mongo_uri)
-
-# Access the database
-db = client['woof_walk']
-
-# Access the collection
-collection = db['pets']
 
 # Define route handler function to fetch pets data from MongoDB API
 @app.route('/get_pets', methods=['GET'])
@@ -69,7 +40,7 @@ def get_pets():
     }
     
     # Send POST request to MongoDB API
-    response = requests.post(url, headers=headers, data=payload)
+    # response = requests.post(url, headers=headers, data=payload)
     
     # Check if request was successful
     if response.status_code == 200:
@@ -85,34 +56,24 @@ def index():
     return render_template('index.html')
 
 # Route for Register Dog page
-@app.route('/register_dog_walker')
+@app.route('/register_dog')
 def register_dog():
-    return render_template('Pages/registerdogwalker.html')
-
-# Route for Search Dog page
-@app.route('/search_dog_walker')
-def search_dog():
-    return render_template('Pages/searchdogwalker.html', results=walker_data)
-
-# Route for Register Dog page
-@app.route('/register_dog', methods=['GET', 'POST'])
-def register_dog():
-    if request.method == 'POST':
-        # Fetch form data
-        name = request.form['name']
-        breed = request.form['breed']
-        age = request.form['age']
-        # Add pet data to the global list
-        pets_data.append({'name': name, 'breed': breed, 'age': age})
-        return render_template('Pages/registerdog.html', message="Dog registered successfully!")
     return render_template('Pages/registerdog.html')
 
-
-# Route for search dogs page
+# Route for Search Dog page
 @app.route('/search_dog')
 def search_dog():
-    # Render the search dog page with all registered dogs
-    return render_template('Pages/searchdog.html', results=pets_data)
+    return render_template('Pages/searchdog.html')
+
+# Route for Register Dog Walker page
+@app.route('/register_dog_walker')
+def register_dog_walker():
+    return render_template('Pages/registerdogwalker.html')
+
+# Route for Search Dog Walker page
+@app.route('/search_dog_walker')
+def search_dog_walker():
+    return render_template('Pages/searchdogwalker.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
