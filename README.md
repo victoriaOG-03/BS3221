@@ -1,6 +1,7 @@
 # BS3221 Summative Assignment
 
-
+### Description 
+Waqq.ly is a web application designed to connect dog owners with experienced dog walkers. Whether you're a busy professional in need of someone reliable to take your furry friend for a stroll, or a passionate dog walker looking for new clients, Waqq.ly provides a platform for both parties to connect conveniently. The allows you to register your dog and view other dogs on the system, it also does the same thing for dog walkers, providing their name, experience in terms of how many years they have been in the industry, their rating and thier location. this allows dog owners to find a dog walker in their location.
 
 ## Development environment instructions:
 
