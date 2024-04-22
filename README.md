@@ -1,5 +1,7 @@
 # BS3221 Summative Assignment
 
+
+
 ## Development environment instructions:
 
 ### Setting up the development environment:
@@ -58,3 +60,28 @@ To deploy the application through the Azure cloud portal, follow these steps:
 3. Press Enter to access the deployed application.
 
 4. You should be able to see the website and have access to all the pages that are present.
+
+5. On the register dog and dog walker page there is a simple form you can fill in with the details being asked if you where to press submit before adding in any details it will ask you to fill in this field.
+
+6. to see the new registered item you will go to the respective pages if it was a dog registered then you go to search dog and vice versa for dog walkers.
+
+To deploy the application through the Azure cloud portal, follow these steps:
+
+1. Copy the following link: `https://waqqly-dogs.azurewebsites.net/`.
+
+2. Open your web browser and paste the link into the address bar.
+
+3. Press Enter to access the deployed application.
+
+4. You should be able to see the website and have access to all the pages that are present.
+
+5. On the register dog and dog walker page, there is a simple form. You must fill in all the required fields before submitting the form.
+
+6. To view newly registered items, navigate to the respective pages: for registered dogs, go to the "Search Dog" page, and for registered dog walkers, go to the "Search Dog Walker" page.
+
+
+### Additional Instructions:
+
+1. Ensure that all necessary information is provided in the forms before submitting.
+  
+2. For image uploads, make sure the image file is in a supported format (e.g., JPEG, PNG) and does not exceed any file size limits set by the application. 
